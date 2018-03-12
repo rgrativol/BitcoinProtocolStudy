@@ -3,6 +3,13 @@ from secrets import randbits
 import bitcoin.formatters as formatter
 from bitcoin.public_key import PublicKey
 
+from enum import Enum
+
+
+class Network(Enum):
+    MAIN = 0,
+    TEST = 1
+
 
 class PrivateKey():
     _curve = SECP256k1  # secp256k1 refers to the parameters of the ECDSA curve used in Bitcoin
@@ -36,7 +43,7 @@ class PrivateKey():
         """
         return self._ecdsa_private_key.to_string()
 
-    def to_wif(self, main_net=True) -> str:
+    def to_wif(self, network=Network.MAIN) -> str:
         """
         Private Key Wallet Import Format  
         :return: WIF string
@@ -44,9 +51,9 @@ class PrivateKey():
         """
         # Add a 0x80 byte in front of it for mainnet addresses or 0xef for testnet addresses.
         # Also add a 0x01 byte at the end if the private key will correspond to a compressed public key
-        if main_net:
+        if network == Network.MAIN:
             data = b'80' + self.to_hex()
-        else:
+        if network == Network.TEST:
             data = b'ef' + self.to_hex()
         return formatter.bin_to_wif(data)  # https://en.bitcoin.it/wiki/Wallet_import_format
 
