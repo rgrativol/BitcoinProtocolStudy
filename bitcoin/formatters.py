@@ -110,7 +110,7 @@ def is_wif_pk(value):
 def base58check_to_int(value):
     # Creates from WIF (Wallet Import Format) see: https://en.bitcoin.it/wiki/Wallet_import_format
     wifi_decoded_hex = bin_to_hex(base58.b58decode_check(value))[2:]  # Drops the network byte
-    return base58.b58decode_int(wifi_decoded_hex)
+    return int(wifi_decoded_hex, 16)
 
 
 def is_bin(data):
