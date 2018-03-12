@@ -1,6 +1,7 @@
 import unittest
 import bitcoin.formatters as formatter
 
+
 class TestFormatters(unittest.TestCase):
     def test_hex_to_int(self):
         self.assertEqual(formatter.hex_to_int('f'), 15)
@@ -34,7 +35,8 @@ class TestFormatters(unittest.TestCase):
 
     def test_bin_to_wif(self):
         data = '800C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D'
-        self.assertEqual(formatter.bin_to_wif(data),'5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ')
+        self.assertEqual(formatter.bin_to_wif(data), '5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ')
+
 
 if __name__ == '__main__':
     unittest.main()

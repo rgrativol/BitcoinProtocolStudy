@@ -87,7 +87,7 @@ def is_int(value) -> bool:
     return isinstance(value, int)
 
 
-def int_to_256bit(value, endianness='big'):
+def int_to_256bits(value, endianness='big'):
     if is_int(value):
         return value.to_bytes(length=32, byteorder=endianness)
     else:

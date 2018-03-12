@@ -19,13 +19,14 @@ class TestPrivateKey(unittest.TestCase):
         self.assertEqual(self.private_key_hex.to_int(), self.pk_int)
         self.assertEqual(self.private_key_wif.to_int(), self.pk_int)
 
-        def test_private_key_to_bin(self):
-            pk_bin = formatter.int_to_256bit(self.pk_int)
-            private_key = PrivateKey(self.pk_int)
-            self.assertEqual(private_key.to_bin(), pk_bin)
+    def test_private_key_to_256bits(self):
+        pk_256_bits = formatter.int_to_256bits(self.pk_int)
+        self.assertEqual(self.private_key_int.to_256bits(), pk_256_bits)
+        self.assertEqual(self.private_key_hex.to_256bits(), pk_256_bits)
+        self.assertEqual(self.private_key_wif.to_256bits(), pk_256_bits)
 
-        def test_private_key_to_wif(self):
-            pass
+    def test_private_key_to_wif(self):
+        pass
 
     if __name__ == '__main__':
         unittest.main()
