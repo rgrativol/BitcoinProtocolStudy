@@ -26,7 +26,9 @@ class TestPrivateKey(unittest.TestCase):
         self.assertEqual(self.private_key_wif.to_256bits(), pk_256_bits)
 
     def test_private_key_to_wif(self):
-        pass
+        self.assertEqual(self.private_key_int.to_wif(), self.pk_wif)
+        self.assertEqual(self.private_key_hex.to_wif(), self.pk_wif)
+        self.assertEqual(self.private_key_wif.to_wif(), self.pk_wif)
 
     if __name__ == '__main__':
         unittest.main()
