@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d71c6de3-4b53-4797-9e60-534332fe9bdb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test_private_key.py" afterPath="$PROJECT_DIR$/test/test_private_key.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitcoin/private_key.py" afterPath="$PROJECT_DIR$/bitcoin/private_key.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="private_key.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="private_key.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bitcoin/private_key.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="18" />
+            <state relative-caret-position="-1283">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_private_key.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_private_key.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_private_key.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="625">
+              <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -132,8 +132,8 @@
         <option value="$PROJECT_DIR$/bitcoin/formatters.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test/test_formatters.py" />
-        <option value="$PROJECT_DIR$/bitcoin/private_key.py" />
         <option value="$PROJECT_DIR$/test/test_private_key.py" />
+        <option value="$PROJECT_DIR$/bitcoin/private_key.py" />
       </list>
     </option>
   </component>
@@ -653,16 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bitcoin/private_key.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bitcoin/formatters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="664">
@@ -695,10 +685,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_private_key.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="625">
+          <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitcoin/private_key.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1283">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

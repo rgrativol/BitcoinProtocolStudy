@@ -5,7 +5,7 @@ from bitcoin.public_key import PublicKey
 
 
 class PrivateKey():
-    _curve = SECP256k1
+    _curve = SECP256k1  # secp256k1 refers to the parameters of the ECDSA curve used in Bitcoin
 
     def __init__(self, private_key=None):
 
@@ -31,7 +31,7 @@ class PrivateKey():
     def to_256bits(self):
         """
         The Private Key in bytes
-        :return: 
+        :return: 256bits key
         :rtype: bytes
         """
         return self._ecdsa_private_key.to_string()
@@ -67,12 +67,28 @@ class PrivateKey():
         raise NotImplemented()
 
     def to_int(self):
+        """
+         The Private Key integer number
+         from 0x1 to 0xFFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFE BAAE DCE6 AF48 A03B BFD2 5E8C D036 4140
+        :return: Private key integer 
+        :rtype: int
+        """
         return self._secret_exponent
 
     def get_public_key(self):
+        """
+        The Public Key related to this Private Key
+        :return: PublicKey object
+        :rtype: PublicKey
+        """
         return PublicKey(self._ecdsa_private_key.get_verifying_key())
 
     def _generate_secret_exponent(self):
+        """
+        Generate random private key
+        :return: 256bits number
+        :rtype: int
+        """
         while True:
             # random 256bits number
             random_int = int(randbits(256), 16)
