@@ -36,11 +36,11 @@ class PrivateKey():
         """
         return self._ecdsa_private_key.to_string()
 
-    # https://en.bitcoin.it/wiki/Wallet_import_format
     def to_wif(self, main_net=True):
         """
-        
-        :return: 
+        Private Key Wallet Import Format  
+        :return: WIF string
+        :rtype: str
         """
         # Add a 0x80 byte in front of it for mainnet addresses or 0xef for testnet addresses.
         # Also add a 0x01 byte at the end if the private key will correspond to a compressed public key
@@ -48,7 +48,7 @@ class PrivateKey():
             data = b'80' + self.to_hex()
         else:
             data = b'ef' + self.to_hex()
-        return formatter.bin_to_wif(data)
+        return formatter.bin_to_wif(data)  # https://en.bitcoin.it/wiki/Wallet_import_format
 
     def to_hex(self):
         """
