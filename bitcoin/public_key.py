@@ -1,6 +1,7 @@
 from ecdsa import VerifyingKey
 import bitcoin.formatters as formatter
 import bitcoin.hashes as hashes
+from bitcoin.private_key import Network
 
 
 class PublicKey():
@@ -15,7 +16,10 @@ class PublicKey():
     def to_bin(self):
         return b'\x04' + self._ecdsa_public_key.to_string()
 
-    def address(self, compressed=False):
+    def address(self, network=Network.MAIN, compressed=False):
+        version_byte =  b'\x00'
+        if not network == Network.TEST:
+            version_byte = b'\x6F '
         # 1 - Take the corresponding public key generated with it
         #  (65 bytes, 1 byte 0x04, 32 bytes corresponding to X coordinate, 32 bytes corresponding to Y coordinate)
 
