@@ -28,7 +28,7 @@ class PrivateKey():
 
         self._ecdsa_private_key = SigningKey.from_secret_exponent(secexp=self._secret_exponent, curve=self._curve)
 
-    def to_256bits(self):
+    def to_256bits(self) -> bytes:
         """
         The Private Key in bytes
         :return: 256bits key
@@ -36,7 +36,7 @@ class PrivateKey():
         """
         return self._ecdsa_private_key.to_string()
 
-    def to_wif(self, main_net=True):
+    def to_wif(self, main_net=True) -> str:
         """
         Private Key Wallet Import Format  
         :return: WIF string
@@ -50,7 +50,7 @@ class PrivateKey():
             data = b'ef' + self.to_hex()
         return formatter.bin_to_wif(data)  # https://en.bitcoin.it/wiki/Wallet_import_format
 
-    def to_hex(self):
+    def to_hex(self) -> bytes:
         """
         Private Key in Hexadecimal Format (64 characters [0-9A-F])
         :return: Hexadecimal number
@@ -58,7 +58,7 @@ class PrivateKey():
         """
         return formatter.bin_to_hex(self.to_256bits())
 
-    def to_base64(self):
+    def to_base64(self) -> str:
         """
         The Private Key in Base64 encoding (44 characters)
         :return: Base64 string
@@ -66,7 +66,7 @@ class PrivateKey():
         """
         raise NotImplemented()
 
-    def to_int(self):
+    def to_int(self) -> int:
         """
          The Private Key integer number
          from 0x1 to 0xFFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFE BAAE DCE6 AF48 A03B BFD2 5E8C D036 4140
@@ -75,7 +75,7 @@ class PrivateKey():
         """
         return self._secret_exponent
 
-    def get_public_key(self):
+    def get_public_key(self) -> PublicKey:
         """
         The Public Key related to this Private Key
         :return: PublicKey object
@@ -83,7 +83,7 @@ class PrivateKey():
         """
         return PublicKey(self._ecdsa_private_key.get_verifying_key())
 
-    def _generate_secret_exponent(self):
+    def _generate_secret_exponent(self) -> int:
         """
         Generate random private key
         :return: 256bits number

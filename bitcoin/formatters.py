@@ -103,11 +103,11 @@ def is_256bit_hex_string(value) -> bool:
     return isinstance(value, str) and len(value) == 64 and is_hex(value)
 
 
-def is_wif_pk(value):
+def is_wif_pk(value) -> bool:
     return 51 <= len(value) <= 52  # wif normal and compressed
 
 
-def base58check_to_int(value):
+def base58check_to_int(value) -> int:
     # Creates from WIF (Wallet Import Format) see: https://en.bitcoin.it/wiki/Wallet_import_format
     wifi_decoded_hex = bin_to_hex(base58.b58decode_check(value))[2:]  # Drops the network byte
     return int(wifi_decoded_hex, 16)
