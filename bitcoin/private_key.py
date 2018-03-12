@@ -28,7 +28,7 @@ class PrivateKey():
 
         self._ecdsa_private_key = SigningKey.from_secret_exponent(secexp=self._secret_exponent, curve=self._curve)
 
-    def to_256bits(self) -> bytes:
+    def to_bin(self) -> bytes:
         """
         The Private Key in bytes
         :return: 256bits key
@@ -56,7 +56,7 @@ class PrivateKey():
         :return: Hexadecimal number
         :rtype: bytes
         """
-        return formatter.bin_to_hex(self.to_256bits())
+        return formatter.bin_to_hex(self.to_bin())
 
     def to_base64(self) -> str:
         """
@@ -75,7 +75,7 @@ class PrivateKey():
         """
         return self._secret_exponent
 
-    def get_public_key(self) -> PublicKey:
+    def public_key(self) -> PublicKey:
         """
         The Public Key related to this Private Key
         :return: PublicKey object

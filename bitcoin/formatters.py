@@ -89,7 +89,7 @@ def is_int(value) -> bool:
 
 def int_to_256bits(value, endianness='big'):
     if is_int(value):
-        return value.to_bytes(length=32, byteorder=endianness)
+        return value.to_bin(length=32, byteorder=endianness)
     else:
         raise ValueError('Value must be an int')
 
@@ -112,6 +112,8 @@ def base58check_to_int(value) -> int:
     wifi_decoded_hex = bin_to_hex(base58.b58decode_check(value))[2:]  # Drops the network byte
     return int(wifi_decoded_hex, 16)
 
+def bytes_to_base58check(data):
+    return base58.b58encode_check(data)
 
 def is_bin(data):
     return isinstance(data, (bytes, bytearray))
