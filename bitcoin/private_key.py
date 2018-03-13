@@ -1,14 +1,8 @@
 from ecdsa import SigningKey, SECP256k1
 from secrets import randbits
 import bitcoin.formatters as formatter
+from bitcoin.network import Network
 from bitcoin.public_key import PublicKey
-
-from enum import Enum
-
-
-class Network(Enum):
-    MAIN = 0,
-    TEST = 1
 
 
 class PrivateKey():

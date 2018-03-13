@@ -1,7 +1,7 @@
 from ecdsa import VerifyingKey
 import bitcoin.formatters as formatter
 import bitcoin.hashes as hashes
-from bitcoin.private_key import Network
+from bitcoin.network import Network
 
 
 class PublicKey():
@@ -17,9 +17,9 @@ class PublicKey():
         return b'\x04' + self._ecdsa_public_key.to_string()
 
     def address(self, network=Network.MAIN, compressed=False):
-        version_byte =  b'\x00'
-        if not network == Network.TEST:
-            version_byte = b'\x6F '
+        network_version_byte = b'\x00'
+        if network == Network.TEST:
+            network_version_byte = b'\x6F '
         # 1 - Take the corresponding public key generated with it
         #  (65 bytes, 1 byte 0x04, 32 bytes corresponding to X coordinate, 32 bytes corresponding to Y coordinate)
 
@@ -27,7 +27,7 @@ class PublicKey():
         data = hashes.ripemd160(hashes.sha256(self.to_bin()))
 
         # 3 - Add version byte in front of RIPEMD-160 hash (0x00 for Main Network)
-        data = b'\x00' + data
+        data = network_version_byte + data
 
         # 5 - Base58Check encoding (for better human readability)
         address = formatter.bytes_to_base58check(data)
