@@ -1,5 +1,6 @@
 from binascii import hexlify, unhexlify
 import base58
+import struct
 
 
 def hex_to_int(value) -> int:
@@ -112,7 +113,7 @@ def base58check_to_int(value) -> int:
     return int(wifi_decoded_hex, 16)
 
 
-def bytes_to_base58check(data):
+def bytes_to_base58check(data) -> str:
     return base58.b58encode_check(data)
 
 
@@ -120,7 +121,40 @@ def is_bin(data):
     return isinstance(data, (bytes, bytearray))
 
 
-def bin_to_wif(data):
+def bin_to_wif(data) -> str:
     # Wallet Import Format (WIF, also known as Wallet Export Format) is a way of encoding
     #  a private ECDSA key so as to make it easier to copy.
     return base58.b58encode_check(hex_to_bin(data))
+
+
+def count_bytes(hex_s) -> int:
+    """
+    Calculate the number of bytes of a given hex string.
+    :param hex_s: Hexadecimal string
+    :return: int
+    :rtype: int
+    """
+    assert (is_hex(hex_s))
+    return int(len(hex_s) / 2)
+
+
+def flip_endian(s) -> bytes:
+    """
+
+    :param s: 
+    :return: 
+    """
+    if is_hex:
+        return bin_to_hex(hex_to_bin(s)[::-1])
+    return s[::-1]
+
+
+def to_little_endian_8bytes(value):
+    """
+    
+    :param value: 
+    :return: 
+    """
+    # Little  endian: <
+    # Unsigned Long long: 8 bytes
+    return struct.pack('<Q', value)

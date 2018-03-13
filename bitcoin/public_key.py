@@ -1,7 +1,6 @@
 from ecdsa import VerifyingKey
-import bitcoin.formatters as formatter
-import bitcoin.hashes as hashes
 from bitcoin.network import Network
+from bitcoin.utils import *
 
 
 class PublicKey:
@@ -30,9 +29,9 @@ class PublicKey:
         data = network_version_byte + data
 
         # 5 - Base58Check encoding (for better human readability)
-        address = formatter.bytes_to_base58check(data)
+        address = bytes_to_base58check(data)
 
         return address
 
     def to_hex(self):
-        return b'04' + formatter.bin_to_hex(self._ecdsa_public_key.to_string())
+        return b'04' + bin_to_hex(self._ecdsa_public_key.to_string())

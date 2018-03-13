@@ -1,8 +1,8 @@
 from ecdsa import SigningKey, SECP256k1
 from secrets import randbits
-import bitcoin.formatters as formatter
 from bitcoin.network import Network
 from bitcoin.public_key import PublicKey
+from bitcoin.utils import *
 
 
 class PrivateKey:
@@ -14,16 +14,16 @@ class PrivateKey:
             # If no private key is provided then creates one
             self._secret_exponent = self._generate_secret_exponent()
 
-        elif formatter.is_int(private_key):
+        elif is_int(private_key):
             # Creates from integer number
             self._secret_exponent = private_key
 
-        elif formatter.is_256bit_hex_string(private_key):
+        elif is_256bit_hex_string(private_key):
             # Creates from hex number
             self._secret_exponent = int(private_key, 16)
 
-        elif formatter.is_wif_pk(private_key):
-            self._secret_exponent = formatter.base58check_to_int(private_key)
+        elif is_wif_pk(private_key):
+            self._secret_exponent = base58check_to_int(private_key)
 
         if not self._secret_exponent: raise ValueError('Please check the private key value provided.')
 
@@ -49,7 +49,7 @@ class PrivateKey:
             data = b'80' + self.to_hex()
         if network == Network.TEST:
             data = b'ef' + self.to_hex()
-        return formatter.bin_to_wif(data)  # https://en.bitcoin.it/wiki/Wallet_import_format
+        return bin_to_wif(data)  # https://en.bitcoin.it/wiki/Wallet_import_format
 
     def to_hex(self) -> bytes:
         """
@@ -57,7 +57,7 @@ class PrivateKey:
         :return: Hexadecimal number
         :rtype: bytes
         """
-        return formatter.bin_to_hex(self.to_bin())
+        return bin_to_hex(self.to_bin())
 
     def to_base64(self) -> str:
         """
