@@ -5,7 +5,7 @@ from bitcoin.network import Network
 from bitcoin.public_key import PublicKey
 
 
-class PrivateKey():
+class PrivateKey:
     _curve = SECP256k1  # secp256k1 refers to the parameters of the ECDSA curve used in Bitcoin
 
     def __init__(self, private_key=None):

@@ -4,7 +4,7 @@ import bitcoin.hashes as hashes
 from bitcoin.network import Network
 
 
-class PublicKey():
+class PublicKey:
     _version_byte = 0  # https://en.bitcoin.it/wiki/Base58Check_encoding
 
     def __init__(self, verifying_key: VerifyingKey):
