@@ -1,4 +1,4 @@
-from bitcoin.private_key import Network, PrivateKey
+from bitcoin import Network, PrivateKey
 
 
 def main():
